@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SceneManager : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class SceneManager : MonoBehaviour
     [SerializeField] private GameObject audioEditorSettingPanel;
 
     [SerializeField] private GameObject onScreenCanvas;
+
+    [SerializeField] private Slider fieldOfViewSlider;
 
     public void ToggleUploadingPanelVisibility()
     {
@@ -38,6 +41,8 @@ public class SceneManager : MonoBehaviour
     IEnumerator Capture()
     {
         onScreenCanvas.SetActive(false);
+        fieldOfViewSlider.gameObject.SetActive(false);
+
         var random = new System.Random();
 
         string folderPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Desktop) + "/Screenshots/";
@@ -53,6 +58,19 @@ public class SceneManager : MonoBehaviour
         Debug.Log(folderPath + screenshotName);
 
         yield return new WaitForSeconds(0.2f);
+
         onScreenCanvas.SetActive(true);
+        fieldOfViewSlider.gameObject.SetActive(true);
+    }
+
+
+    public void AdjustFOV()
+    {
+        Camera.main.fieldOfView = fieldOfViewSlider.value;
+    }
+
+    public void ResetFOV()
+    {
+        Camera.main.fieldOfView = 60;
     }
 }
