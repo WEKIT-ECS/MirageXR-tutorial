@@ -4,8 +4,7 @@ using UnityEngine.InputSystem;
 
 using UnityEngine;
 
-namespace UnityTemplateProjects
-{
+
     public class SimpleCameraController : MonoBehaviour
     {
         class CameraState
@@ -49,7 +48,7 @@ namespace UnityTemplateProjects
 
             public void UpdateTransform(Transform t)
             {
-                t.eulerAngles = new Vector3(pitch, yaw, SceneManager.Instance.CameraRotationSlider.value);
+                t.eulerAngles = new Vector3(pitch, yaw, roll);
                 t.position = new Vector3(x, t.transform.position.y, z);
             }
         }
@@ -59,7 +58,7 @@ namespace UnityTemplateProjects
 
         [Header("Movement Settings")]
         [Tooltip("Exponential boost factor on translation, controllable by mouse wheel.")]
-        public float boost = 3.5f;
+        public float boost = 2f;
 
         [Tooltip("Time it takes to interpolate camera position 99% of the way to the target."), Range(0.001f, 1f)]
         public float positionLerpTime = 0.2f;
@@ -72,7 +71,7 @@ namespace UnityTemplateProjects
         public float rotationLerpTime = 0.01f;
 
         [Tooltip("Whether or not to invert our Y axis for mouse input to rotation.")]
-        public bool invertY = false;
+        public bool invertY = true;
 
 #if ENABLE_INPUT_SYSTEM
         InputAction movementAction;
@@ -285,4 +284,3 @@ namespace UnityTemplateProjects
 
     }
 
-}

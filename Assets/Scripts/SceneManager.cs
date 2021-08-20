@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityTemplateProjects;
 
 public class SceneManager : MonoBehaviour
 {
@@ -39,6 +38,10 @@ public class SceneManager : MonoBehaviour
 
     [SerializeField] private GameObject notificationText;
 
+
+    private Camera _cam;
+    private GameObject _player;
+
     public Slider CameraRotationSlider
     {
         get
@@ -54,6 +57,13 @@ public class SceneManager : MonoBehaviour
             Instance = this;
         else if (this != Instance)
             Destroy(gameObject);
+
+
+        _cam = Camera.main;
+        _player = GameObject.FindGameObjectWithTag("Player");
+
+        if (_player.GetComponent<SimpleCameraController>() == null)
+            _player.AddComponent<SimpleCameraController>();
     }
 
 
@@ -143,25 +153,26 @@ public class SceneManager : MonoBehaviour
 
     public void AdjustFOV()
     {
-        Camera.main.fieldOfView = fieldOfViewSlider.value;
+        _cam.fieldOfView = fieldOfViewSlider.value;
     }
 
     public void ResetFOV()
     {
-        Camera.main.fieldOfView = 60;
+        _cam.fieldOfView = 60;
+        fieldOfViewSlider.value = 60;
     }
 
     public void RotateCamera()
     {
-        var camRotation = Camera.main.transform.rotation;
-        Camera.main.transform.rotation = Quaternion.Euler(camRotation.x, camRotation.y, cameraRotationSlider.value);
+        var camRotation = _cam.transform.rotation;
+        _cam.transform.rotation = Quaternion.Euler(camRotation.x, camRotation.y, cameraRotationSlider.value);
     }
 
 
     public void ResetRotation()
     {
-        var camRotation = Camera.main.transform.rotation;
-        Camera.main.transform.rotation = Quaternion.Euler(camRotation.x, camRotation.y, 0);
+        var camRotation = _cam.transform.rotation;
+        _cam.transform.rotation = Quaternion.Euler(camRotation.x, camRotation.y, 0);
     }
 
 
@@ -170,23 +181,26 @@ public class SceneManager : MonoBehaviour
     {
         _flying = !_flying;
 
-        SceneManager.Instance.CameraRotationSlider.interactable = _flying;
+        CameraRotationSlider.interactable = _flying;
 
         if (_flying)
         {
-            Destroy(Camera.main.GetComponent<Rigidbody>());
-            Camera.main.GetComponent<SimpleCameraController>().enabled = false;
-            Camera.main.GetComponent<FlyCamera>().enabled = true;
+            Destroy(_player.GetComponent<Rigidbody>());
+
+            if (_player.GetComponent<SimpleCameraController>())
+                Destroy(_player.GetComponent<SimpleCameraController>());
+            _player.AddComponent<FlyCamera>();
         }
         else
         {
-            var rb =  Camera.main.gameObject.AddComponent<Rigidbody>();
-            rb.freezeRotation = true;
+            var rb = _player.gameObject.AddComponent<Rigidbody>();
             rb.mass = 50;
             rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
-            Camera.main.GetComponent<SimpleCameraController>().enabled = true;
-            Camera.main.GetComponent<FlyCamera>().enabled = false;
+            rb.freezeRotation = true;
 
+            if (_player.GetComponent<FlyCamera>())
+                Destroy(_player.GetComponent<FlyCamera>());
+            _player.AddComponent<SimpleCameraController>();
         }
     }
 
@@ -198,4 +212,9 @@ public class SceneManager : MonoBehaviour
 
     }
 
+
+    public void Exit()
+    {
+        Application.Quit();
+    }
 }
