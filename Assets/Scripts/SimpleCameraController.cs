@@ -43,13 +43,13 @@ namespace UnityTemplateProjects
                 roll = Mathf.Lerp(roll, target.roll, rotationLerpPct);
                 
                 x = Mathf.Lerp(x, target.x, positionLerpPct);
-                //y = Mathf.Lerp(y, target.y, positionLerpPct);
+                y = Mathf.Lerp(y, target.y, positionLerpPct);
                 z = Mathf.Lerp(z, target.z, positionLerpPct);
             }
 
             public void UpdateTransform(Transform t)
             {
-                t.eulerAngles = new Vector3(pitch, yaw, roll);
+                t.eulerAngles = new Vector3(pitch, yaw, SceneManager.Instance.CameraRotationSlider.value);
                 t.position = new Vector3(x, t.transform.position.y, z);
             }
         }
@@ -164,15 +164,6 @@ namespace UnityTemplateProjects
 
         void Update()
         {
-            // Exit Sample  
-
-            if (IsEscapePressed())
-            {
-                Application.Quit();
-				#if UNITY_EDITOR
-				UnityEditor.EditorApplication.isPlaying = false; 
-				#endif
-            }
 
             // Hide and lock cursor when right mouse button pressed
             if (IsRightMouseButtonDown())

@@ -277,8 +277,6 @@ GameObject:
   - component: {fileID: 8864875617323848660}
   - component: {fileID: 4880620928032456282}
   - component: {fileID: 2164724048332289477}
-  - component: {fileID: 6069492641581492539}
-  - component: {fileID: 7079124740189065408}
   m_Layer: 5
   m_Name: CloseButton
   m_TagString: Untagged
@@ -334,8 +332,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 3286163911610860551, guid: b25daa46b60b5804bb5a3ab189b73d14,
-    type: 3}
+  m_Sprite: {fileID: 3286163911610860551, guid: b25daa46b60b5804bb5a3ab189b73d14, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -359,6 +356,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
+    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -388,48 +386,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2729124785339881597}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: Close
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &6069492641581492539
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2893961709560659611}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63c897c097799da4a900032ad3471c47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movingButtonVisuals: {fileID: 0}
-  distanceSpaceMode: 1
-  startPushDistance: 0
-  maxPushDistance: 0.2
-  pressDistance: 0.02
-  releaseDistanceDelta: 0.01
-  returnSpeed: 25
-  releaseOnTouchEnd: 1
-  enforceFrontPush: 1
-  TouchBegin:
-    m_PersistentCalls:
-      m_Calls: []
-  TouchEnd:
-    m_PersistentCalls:
-      m_Calls: []
-  ButtonPressed:
-    m_PersistentCalls:
-      m_Calls:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: 
         m_MethodName: Close
@@ -442,23 +398,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  ButtonReleased:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &7079124740189065408
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2893961709560659611}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fcaf896491074042b7ed7684454a412, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventsToReceive: 0
-  debounceThreshold: 0.01
 --- !u!1 &3829224795934223843
 GameObject:
   m_ObjectHideFlags: 0
@@ -550,6 +489,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
+    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -947,7 +887,6 @@ GameObject:
   - component: {fileID: 8573306091950455813}
   - component: {fileID: 4276969939647931945}
   - component: {fileID: 35723762199628514}
-  - component: {fileID: 2729124785339881597}
   m_Layer: 5
   m_Name: VFXSelector
   m_TagString: Untagged
@@ -962,7 +901,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8801628818658322794}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1006,8 +945,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 3286163911610860551, guid: b25daa46b60b5804bb5a3ab189b73d14,
-    type: 3}
+  m_Sprite: {fileID: 3286163911610860551, guid: b25daa46b60b5804bb5a3ab189b73d14, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1017,38 +955,3 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 10
---- !u!114 &2729124785339881597
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8801628818658322794}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef361673555480c448ac789f40bb35db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _contentContainer: {fileID: 352793707506643510}
-  _vfxListItemPrefab: {fileID: 1103760148557323681, guid: a4ce5ba37ca7ce94c913652f3527aa21,
-    type: 3}
-  _vfxObjects:
-  - {fileID: 11400000, guid: 7e9301bf68a9f7d4993b30f600f052f3, type: 2}
-  - {fileID: 11400000, guid: bd5aa7353939de044b829b94169633fe, type: 2}
-  - {fileID: 11400000, guid: e903ca62147bbce46ab13d2547aefd90, type: 2}
-  - {fileID: 11400000, guid: 4d95feaffe51ce341ba1210fe1349223, type: 2}
-  - {fileID: 11400000, guid: fac997a9c2bf94141ae2a38808bc0c45, type: 2}
-  - {fileID: 11400000, guid: a53848b0fc9f14a4db8b3cb402182cc4, type: 2}
-  - {fileID: 11400000, guid: a92984a85ffc0c3498cb35945f5bffbf, type: 2}
-  - {fileID: 11400000, guid: eac2f57ed3cf51c4b9b3cfea3368a85f, type: 2}
-  - {fileID: 11400000, guid: 8d43cd68a0c4f014392e54df372ed9a5, type: 2}
-  - {fileID: 11400000, guid: faba1fee5bb89bd4da9d3d75184d613f, type: 2}
-  - {fileID: 11400000, guid: 99ea47087e1c2d044b9d1d8821970ed4, type: 2}
-  - {fileID: 11400000, guid: 4c2cfdecca2a3d945bbe6b53619be177, type: 2}
-  - {fileID: 11400000, guid: bcf988368ce09d54789dce231a667ff7, type: 2}
-  - {fileID: 11400000, guid: 4f283a3fdb19669439e10c0a258b8a05, type: 2}
-  - {fileID: 11400000, guid: 90ce36c8d978bc9498d4f4fda2a754b8, type: 2}
-  - {fileID: 11400000, guid: 39acb3f88202fea41ada4dd17eb71143, type: 2}
-  - {fileID: 11400000, guid: feedb1a62c10b9e40a79455d150dd7ab, type: 2}
-  - {fileID: 11400000, guid: 14c17229b050bfa43bd87885d80bace5, type: 2}
-  - {fileID: 11400000, guid: 6ef35a14f1cddd24f8f88d21f81c4e7d, type: 2}

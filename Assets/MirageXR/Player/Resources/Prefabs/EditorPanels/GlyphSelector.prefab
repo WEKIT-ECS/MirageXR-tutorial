@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5991384699628601257}
   - component: {fileID: 5963899828511557815}
   - component: {fileID: 7600028465304934573}
-  - component: {fileID: 4718774949041314567}
   m_Layer: 5
   m_Name: GlyphSelector
   m_TagString: Untagged
@@ -26,7 +25,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 22301338855240907}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -70,8 +69,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 3286163911610860551, guid: b25daa46b60b5804bb5a3ab189b73d14,
-    type: 3}
+  m_Sprite: {fileID: 3286163911610860551, guid: b25daa46b60b5804bb5a3ab189b73d14, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -81,49 +79,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 10
---- !u!114 &4718774949041314567
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 22301338855240907}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57d1d8c2dc5b0b648a82bbd18f8efdf2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _contentContainer: {fileID: 5536689118794484491}
-  _glyphListItemPrefab: {fileID: 2320827832421136184, guid: 2f584310852efaa43a4b5aead3e893ef,
-    type: 3}
-  _actionObjects:
-  - {fileID: 11400000, guid: bff0decfb6e227543928381f37cbb54d, type: 2}
-  - {fileID: 11400000, guid: 9fcbc419be9dddc40924dd69d32ecfb2, type: 2}
-  - {fileID: 11400000, guid: 8c58c95763a97b649970ec7b10c2c4d1, type: 2}
-  - {fileID: 11400000, guid: 9f5dc63ec0c73c941a5a7fc9c6e87744, type: 2}
-  - {fileID: 11400000, guid: 88db33dd5bf2ab64d9e809eb4e15e2cf, type: 2}
-  - {fileID: 11400000, guid: c97e92f5aa3ae894ead2eab67387b4dd, type: 2}
-  - {fileID: 11400000, guid: c002a482582589049948ee635c0e6bb8, type: 2}
-  - {fileID: 11400000, guid: 36243b2264d3f1a4f9028e40d6507357, type: 2}
-  - {fileID: 11400000, guid: 6bc0580dad8fd604e99f58e0e5ce8cf4, type: 2}
-  - {fileID: 11400000, guid: f0840abdd175f6e439535258b0893a66, type: 2}
-  - {fileID: 11400000, guid: 8f1338b258d3c6844a5ad5ab9d32d800, type: 2}
-  - {fileID: 11400000, guid: 208d4e6cdbf854744ade7e14708c567d, type: 2}
-  - {fileID: 11400000, guid: 6619120c37712784387cbe6d54d5c68a, type: 2}
-  - {fileID: 11400000, guid: dc32f3d02cd180844b46dcf9a2f4e3c2, type: 2}
-  - {fileID: 11400000, guid: c660a40466e80f049a0246a1bd3c9540, type: 2}
-  - {fileID: 11400000, guid: 7b88130b0b9a0cf42b2bc4d2de1325c1, type: 2}
-  - {fileID: 11400000, guid: 1523d88b8549fb740a5b0668961ccb1c, type: 2}
-  - {fileID: 11400000, guid: 664798b4162e64345aac455f90426782, type: 2}
-  - {fileID: 11400000, guid: 75d7c738e9b955c42961ed2f55da4a4b, type: 2}
-  - {fileID: 11400000, guid: 8feec5c187ff3f349880346bd95a40b7, type: 2}
-  - {fileID: 11400000, guid: 41b58cf6127e1394daf66c5f21ed41c1, type: 2}
-  - {fileID: 11400000, guid: 1b5b37f7a97d53f4698a93ac6755091b, type: 2}
-  - {fileID: 11400000, guid: 10e50acf499b11c44ba9f3b4895b6f08, type: 2}
-  - {fileID: 11400000, guid: 97cf1b085d6d9d64e94ac308df4e08c5, type: 2}
-  - {fileID: 11400000, guid: 74aaa07648694e947a50d39f908dd9df, type: 2}
-  - {fileID: 11400000, guid: 1014d33ff99a6dc4a80586accd0ae5c6, type: 2}
-  - {fileID: 11400000, guid: e43a67ae9828b254592eba4cd1f1cc4f, type: 2}
 --- !u!1 &164926321971889699
 GameObject:
   m_ObjectHideFlags: 0
@@ -645,8 +600,6 @@ GameObject:
   - component: {fileID: 7606540969680579618}
   - component: {fileID: 4216717469448753750}
   - component: {fileID: 5109265005358343410}
-  - component: {fileID: 6332872775494791929}
-  - component: {fileID: 3770346089639832257}
   m_Layer: 5
   m_Name: CloseButton
   m_TagString: Untagged
@@ -702,8 +655,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 3286163911610860551, guid: b25daa46b60b5804bb5a3ab189b73d14,
-    type: 3}
+  m_Sprite: {fileID: 3286163911610860551, guid: b25daa46b60b5804bb5a3ab189b73d14, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -727,6 +679,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
+    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -756,7 +709,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4718774949041314567}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: 
         m_MethodName: Close
         m_Mode: 1
@@ -768,65 +721,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &6332872775494791929
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5164809086942402581}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63c897c097799da4a900032ad3471c47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movingButtonVisuals: {fileID: 0}
-  distanceSpaceMode: 1
-  startPushDistance: 0
-  maxPushDistance: 0.2
-  pressDistance: 0.02
-  releaseDistanceDelta: 0.01
-  returnSpeed: 25
-  releaseOnTouchEnd: 1
-  enforceFrontPush: 1
-  TouchBegin:
-    m_PersistentCalls:
-      m_Calls: []
-  TouchEnd:
-    m_PersistentCalls:
-      m_Calls: []
-  ButtonPressed:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4718774949041314567}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: Close
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  ButtonReleased:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &3770346089639832257
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5164809086942402581}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fcaf896491074042b7ed7684454a412, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventsToReceive: 0
-  debounceThreshold: 0.01
 --- !u!1 &7987697832672514033
 GameObject:
   m_ObjectHideFlags: 0
@@ -1026,6 +920,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
+    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
