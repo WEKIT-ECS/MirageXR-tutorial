@@ -8,8 +8,6 @@ public class SceneManager : MonoBehaviour
 {
     public static SceneManager Instance;
 
-    private bool _flying;
-
     [SerializeField] private GameObject uploadingPanel;
     [SerializeField] private GameObject termOfUSePabel;
 
@@ -21,8 +19,8 @@ public class SceneManager : MonoBehaviour
 
     [SerializeField] private GameObject onScreenCanvas;
 
-    [SerializeField] private Slider fieldOfViewSlider;
-    [SerializeField] private Slider cameraRotationSlider;
+    [SerializeField] private GameObject GuideText;
+    [SerializeField] private Button captureButton;
 
     [SerializeField] private GameObject modelLoginPanel;
     [SerializeField] private GameObject modelSearchPanel;
@@ -34,22 +32,28 @@ public class SceneManager : MonoBehaviour
     [SerializeField] private GameObject loginPanel;
     [SerializeField] private GameObject moodleConfigurationPanel;
 
-    [SerializeField] private Toggle flyCamera;
+    [SerializeField] private Camera mainCamera;
+    [SerializeField] private Camera screenShotCamera;
+    [SerializeField] private GameObject playerCamera;
 
-    [SerializeField] private GameObject notificationText;
 
+    [SerializeField] private GameObject HololensModel;
 
-    private Camera _cam;
-    private GameObject _player;
+    private bool screenShotMode;
 
-    public Slider CameraRotationSlider
+    public bool ScreenShotMode
     {
         get
         {
-            return cameraRotationSlider;
+            return screenShotMode;
         }
     }
 
+
+    public bool CustomClipMode
+    {
+        get; set;
+    }
 
     private void Start()
     {
@@ -57,15 +61,17 @@ public class SceneManager : MonoBehaviour
             Instance = this;
         else if (this != Instance)
             Destroy(gameObject);
-
-
-        _cam = Camera.main;
-        _player = GameObject.FindGameObjectWithTag("Player");
-
-        if (_player.GetComponent<SimpleCameraController>() == null)
-            _player.AddComponent<SimpleCameraController>();
     }
 
+    private void Update()
+    {
+        // Hide and lock cursor when right mouse button pressed
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            ScreenShotModeToggle();
+        }
+
+    }
 
     public void TogglepoiListPanelVisibility()
     {
@@ -88,7 +94,6 @@ public class SceneManager : MonoBehaviour
         audioEditorPanel.SetActive(!audioEditorPanel.activeInHierarchy);
         audioEditorSettingPanel.SetActive(!audioEditorSettingPanel.activeInHierarchy);
     }
-
 
 
     public void ToggleModelSearchPanel()
@@ -124,16 +129,14 @@ public class SceneManager : MonoBehaviour
     IEnumerator Capture()
     {
         onScreenCanvas.SetActive(false);
-        fieldOfViewSlider.gameObject.SetActive(false);
-        flyCamera.gameObject.SetActive(false);
-        cameraRotationSlider.gameObject.SetActive(false);
+        GuideText.gameObject.SetActive(false);
 
         var random = new System.Random();
 
         string folderPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Desktop) + "/Screenshots/";
 
-        if (!System.IO.Directory.Exists(folderPath))
-            System.IO.Directory.CreateDirectory(folderPath);
+        if (!Directory.Exists(folderPath))
+            Directory.CreateDirectory(folderPath);
 
         var screenshotName =
                                 "Screenshot_" +
@@ -145,76 +148,58 @@ public class SceneManager : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
 
         onScreenCanvas.SetActive(true);
-        fieldOfViewSlider.gameObject.SetActive(true);
-        flyCamera.gameObject.SetActive(true);
-        cameraRotationSlider.gameObject.SetActive(true);
-    }
-
-
-    public void AdjustFOV()
-    {
-        _cam.fieldOfView = fieldOfViewSlider.value;
-    }
-
-    public void ResetFOV()
-    {
-        _cam.fieldOfView = 60;
-        fieldOfViewSlider.value = 60;
-    }
-
-    public void RotateCamera()
-    {
-        var camRotation = _cam.transform.rotation;
-        _cam.transform.rotation = Quaternion.Euler(camRotation.x, camRotation.y, cameraRotationSlider.value);
-    }
-
-
-    public void ResetRotation()
-    {
-        var camRotation = _cam.transform.rotation;
-        _cam.transform.rotation = Quaternion.Euler(camRotation.x, camRotation.y, 0);
-    }
-
-
-
-    public void OnFlyToggle()
-    {
-        _flying = !_flying;
-
-        CameraRotationSlider.interactable = _flying;
-
-        if (_flying)
-        {
-            Destroy(_player.GetComponent<Rigidbody>());
-
-            if (_player.GetComponent<SimpleCameraController>())
-                Destroy(_player.GetComponent<SimpleCameraController>());
-            _player.AddComponent<FlyCamera>();
-        }
-        else
-        {
-            var rb = _player.gameObject.AddComponent<Rigidbody>();
-            rb.mass = 50;
-            rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
-            rb.freezeRotation = true;
-
-            if (_player.GetComponent<FlyCamera>())
-                Destroy(_player.GetComponent<FlyCamera>());
-            _player.AddComponent<SimpleCameraController>();
-        }
-    }
-
-
-    public void RotationNotification(bool visibility)
-    {
-        if (!_flying && visibility) notificationText.SetActive(true);
-        else notificationText.SetActive(false);
-
+        GuideText.gameObject.SetActive(true);
     }
 
 
     public void Exit()
     {
         Application.Quit();
+    }
+
+
+    public void SetGuideText(string text)
+    {
+        GuideText.GetComponent<Text>().text = text;
+    }
+
+
+    public void ToggleHololensVisibility()
+    {
+        HololensModel.SetActive(!HololensModel.activeInHierarchy);
+    }
+
+    private void ScreenShotModeToggle()
+    {
+        screenShotMode = !screenShotMode;
+        screenShotCamera.fieldOfView = mainCamera.fieldOfView;
+
+        if (screenShotMode)
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+
+            screenShotCamera.transform.position = mainCamera.transform.position;
+            screenShotCamera.transform.rotation = mainCamera.transform.rotation;
+            playerCamera.SetActive(false);
+            screenShotCamera.enabled = true;
+            mainCamera.enabled = false;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+
+            playerCamera.SetActive(true);
+            screenShotCamera.enabled = false;
+            mainCamera.enabled = true;
+        }
+
+        captureButton.interactable = screenShotMode;
+
+        var pMode = CustomClipMode ? "Cancel Pointing" : "Pointing";
+        var scaptureMode = ScreenShotMode ? "Play mode" : "Screenshot mode";
+        var modeDescription = ScreenShotMode ? "(In this mode you can move the\n camera freely using WSAD)" : "(In this mode you can move the\n player using WSAD)";
+        SetGuideText($"P = {pMode}\nTab = {scaptureMode}\n<color=blue><size=40>{modeDescription}</size></color> ");
+
     }
 }

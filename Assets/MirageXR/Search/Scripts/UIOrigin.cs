@@ -5,11 +5,9 @@ using MirageXR;
 
 public class UIOrigin : MonoBehaviour
 {
-    [SerializeField] private GameObject uiOriginObject;
-    [SerializeField] private GameObject ringObject;
     [SerializeField] private LayerMask floorLayer;
 
-    private Transform followTarget;
+    [SerializeField] private Transform followTarget;
 
     bool isFollowing = true;
     float heightOffset = 1.75f;
@@ -27,8 +25,6 @@ public class UIOrigin : MonoBehaviour
         // Attach UI origin objects as the ui origin object.
         //uiOriginObject = GameObject.Find("UiOriginObject");
 
-        // Attach mixed reality camera as the follow target.
-        followTarget = GameObject.FindWithTag("MainCamera").transform;
     }
 
     // Use this for initialization

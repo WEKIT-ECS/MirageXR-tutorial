@@ -28,7 +28,7 @@ public class FlyCamera : MonoBehaviour
         {
             lastMouse = Input.mousePosition - lastMouse;
             lastMouse = new Vector3(-lastMouse.y * camSens, lastMouse.x * camSens, 0);
-            lastMouse = new Vector3(transform.eulerAngles.x + lastMouse.x, transform.eulerAngles.y + lastMouse.y, SceneManager.Instance.CameraRotationSlider.value);
+            lastMouse = new Vector3(transform.eulerAngles.x + lastMouse.x, transform.eulerAngles.y + lastMouse.y, 0);
             transform.eulerAngles = Vector3.Slerp(transform.eulerAngles, lastMouse, 0.5f);
             lastMouse = Input.mousePosition;
         }
