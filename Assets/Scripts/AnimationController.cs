@@ -33,23 +33,13 @@ public class AnimationController : MonoBehaviour
     }
 
 
-    public bool AnimatorIsPlaying()
-    {
-        return anim.GetCurrentAnimatorStateInfo(0).length >
-               anim.GetCurrentAnimatorStateInfo(0).normalizedTime;
-    }
-
-    public bool AnimatorIsPlaying(string stateName)
-    {
-        return AnimatorIsPlaying() && anim.GetCurrentAnimatorStateInfo(0).IsName(stateName);
-    }
-
     void PlayAnimClip(string clip)
     {
         anim.SetBool("Idle", false);
         anim.SetBool("Walk", false);
         anim.SetBool("Run", false);
         anim.SetBool("Pointing", false);
+        anim.SetBool("StopPointing", false);
         anim.SetBool(clip, true);
     }
 }

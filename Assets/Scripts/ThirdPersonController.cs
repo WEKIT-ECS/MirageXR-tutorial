@@ -14,12 +14,18 @@ public class ThirdPersonController : MonoBehaviour
     float turnSmoothTime = 0.1f;
     float smoothVelocity;
 
-    private bool _customClipPlaying;
-
-        // Update is called once per frame
-        void FixedUpdate()
+    public bool CustomClipPlaying
     {
-        if (_customClipPlaying || SceneManager.Instance.ScreenShotMode) return;
+        get; set;
+    }
+
+
+
+    // Update is called once per frame
+    private void FixedUpdate()
+    {
+
+        if (CustomClipPlaying || SceneManager.Instance.ScreenShotMode) return;
 
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vetical = Input.GetAxisRaw("Vertical");
@@ -52,8 +58,6 @@ public class ThirdPersonController : MonoBehaviour
         {
             anim.Idle();
         }
-
-
     }
 
     private void Update()
@@ -62,25 +66,15 @@ public class ThirdPersonController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.P))
         {
-
-            if (!_customClipPlaying)
+            if (!CustomClipPlaying)
             {
                 anim.Point();
-                _customClipPlaying = true;
+                CustomClipPlaying = true;
             }
             else
             {
                 anim.StopPoint();
-                if (!anim.AnimatorIsPlaying("StopPointing"))
-                {
-                    _customClipPlaying = false;
-                }
             }
-
-            var pMode = _customClipPlaying ? "Cancel Pointing" : "Pointing";
-            var scaptureMode = SceneManager.Instance.ScreenShotMode ? "Play mode" : "Screenshot mode";
-            var modeDescription = SceneManager.Instance.ScreenShotMode ? "(In this mode you can move the\n camera freely using WSAD)" : "(In this mode you can move the\n player using WSAD)";
-            SceneManager.Instance.SetGuideText($"P = {pMode}\nTab = {scaptureMode}\n<color=blue><size=40>{modeDescription}</size></color> ");
 
         }
             

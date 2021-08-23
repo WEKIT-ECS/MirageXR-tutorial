@@ -62,17 +62,18 @@ public class SceneManager : MonoBehaviour
             Instance = this;
         else if (this != Instance)
             Destroy(gameObject);
+
     }
 
-    private void LateUpdate()
+    private void Update()
     {
-        // Hide and lock cursor when right mouse button pressed
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             ScreenShotModeToggle();
         }
 
     }
+
 
     public void TogglepoiListPanelVisibility()
     {
