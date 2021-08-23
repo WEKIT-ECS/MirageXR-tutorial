@@ -64,7 +64,7 @@ public class SceneManager : MonoBehaviour
             Destroy(gameObject);
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         // Hide and lock cursor when right mouse button pressed
         if (Input.GetKeyDown(KeyCode.Tab))
