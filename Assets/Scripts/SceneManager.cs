@@ -36,6 +36,7 @@ public class SceneManager : MonoBehaviour
     [SerializeField] private Camera screenShotCamera;
     [SerializeField] private GameObject playerCamera;
 
+    [SerializeField] private GameObject MirageUIs;
 
     [SerializeField] private GameObject HololensModel;
 
@@ -168,6 +169,13 @@ public class SceneManager : MonoBehaviour
     {
         HololensModel.SetActive(!HololensModel.activeInHierarchy);
     }
+
+
+    public void ToggleUIVisibility()
+    {
+        MirageUIs.SetActive(!MirageUIs.activeInHierarchy);
+    }
+
 
     private void ScreenShotModeToggle()
     {

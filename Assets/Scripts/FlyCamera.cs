@@ -23,6 +23,11 @@ public class FlyCamera : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetMouseButtonDown(1))
+        {
+            lastMouse = Input.mousePosition;
+        }
+
         // Hide and lock cursor when right mouse button pressed
         if (Input.GetMouseButton(1))
         {
