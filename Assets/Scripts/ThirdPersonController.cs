@@ -70,6 +70,9 @@ public class ThirdPersonController : MonoBehaviour
             {
                 anim.Point();
                 CustomClipPlaying = true;
+                var scaptureMode = SceneManager.Instance.ScreenShotMode ? "Play mode" : "Screenshot mode";
+                var modeDescription = SceneManager.Instance.ScreenShotMode ? "Camera movement: WSAD\nCamera rotation: Right click" : "Player movement: WSAD";
+                SceneManager.Instance.SetGuideText($"P = Cancel pointing\nTab = {scaptureMode}\n{modeDescription} ");
             }
             else
             {
@@ -77,7 +80,6 @@ public class ThirdPersonController : MonoBehaviour
             }
 
         }
-            
     }
 
 }

@@ -40,6 +40,10 @@ public class SceneManager : MonoBehaviour
 
     [SerializeField] private GameObject HololensModel;
 
+    [SerializeField] private GameObject errorText;
+
+    [SerializeField] private GameObject captureLabel;
+
     private bool screenShotMode;
 
     public bool ScreenShotMode
@@ -72,6 +76,10 @@ public class SceneManager : MonoBehaviour
             ScreenShotModeToggle();
         }
 
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            CaptureScreenShot();
+        }
     }
 
 
@@ -125,6 +133,12 @@ public class SceneManager : MonoBehaviour
 
     public void CaptureScreenShot()
     {
+        if (!screenShotMode)
+        {
+            StartCoroutine(ShowErrorMessage());
+            return;
+        }
+
         StartCoroutine(Capture());
     }
 
@@ -149,8 +163,27 @@ public class SceneManager : MonoBehaviour
 
         yield return new WaitForSeconds(0.2f);
 
+        StartCoroutine(ShowCaptureLabel());
         onScreenCanvas.SetActive(true);
         GuideText.gameObject.SetActive(true);
+    }
+
+
+    IEnumerator ShowCaptureLabel()
+    {
+        captureLabel.SetActive(true);
+        captureLabel.GetComponent<Animator>().Play("captureLabel");
+        yield return new WaitForSeconds(1);
+        captureLabel.SetActive(false);
+        captureLabel.GetComponent<Animator>().StopPlayback();
+    }
+
+
+    IEnumerator ShowErrorMessage()
+    {
+        errorText.SetActive(true);
+        yield return new WaitForSeconds(3);
+        errorText.SetActive(false);
     }
 
 
@@ -207,8 +240,8 @@ public class SceneManager : MonoBehaviour
 
         var pMode = CustomClipMode ? "Cancel Pointing" : "Pointing";
         var scaptureMode = ScreenShotMode ? "Play mode" : "Screenshot mode";
-        var modeDescription = ScreenShotMode ? "(In this mode you can move the\n camera freely using WSAD)" : "(In this mode you can move the\n player using WSAD)";
-        SetGuideText($"P = {pMode}\nTab = {scaptureMode}\n<color=blue><size=40>{modeDescription}</size></color> ");
+        var modeDescription = ScreenShotMode ? "Camera movement: WSAD\nCamera rotation: Right click" : "Player movement: WSAD";
+        SceneManager.Instance.SetGuideText($"P = Pointing\nTab = {scaptureMode}\n{modeDescription} ");
 
     }
 }
