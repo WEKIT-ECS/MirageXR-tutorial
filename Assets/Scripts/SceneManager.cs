@@ -44,6 +44,8 @@ public class SceneManager : MonoBehaviour
 
     [SerializeField] private GameObject captureLabel;
 
+    [SerializeField] private GameObject helmet;
+
     private bool screenShotMode;
 
     public bool ScreenShotMode
@@ -202,6 +204,16 @@ public class SceneManager : MonoBehaviour
     public void ToggleHololensVisibility()
     {
         HololensModel.SetActive(!HololensModel.activeInHierarchy);
+
+        //re-position the helmet after hololens model is disabled or enabled
+        if (!HololensModel.activeInHierarchy)
+        {
+            helmet.transform.localPosition = new Vector3(helmet.transform.localPosition.x, helmet.transform.localPosition.y - 0.02f, helmet.transform.localPosition.z + 0.01f);
+        }
+        else
+        {
+            helmet.transform.localPosition = new Vector3(helmet.transform.localPosition.x, helmet.transform.localPosition.y + 0.02f, helmet.transform.localPosition.z - 0.01f);
+        }
     }
 
 
