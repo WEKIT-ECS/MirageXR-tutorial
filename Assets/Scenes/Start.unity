@@ -426,7 +426,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.542132, y: 1}
+    m_SensorSize: {x: 1.6597744, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -3982,7 +3982,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5536689118794484491, guid: 59ef078ac60dcd84dbdb0c0ec1ea0e84, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.0000052452087
+      value: -0.000005722046
       objectReference: {fileID: 0}
     - target: {fileID: 5991384699628601257, guid: 59ef078ac60dcd84dbdb0c0ec1ea0e84, type: 3}
       propertyPath: m_Pivot.x
@@ -6626,36 +6626,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f584310852efaa43a4b5aead3e893ef, type: 3}
---- !u!1 &729841301
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 729841302}
-  m_Layer: 0
-  m_Name: binderPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &729841302
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 729841301}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1271230807}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &732223286
 GameObject:
   m_ObjectHideFlags: 0
@@ -8340,7 +8310,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.542132, y: 1}
+    m_SensorSize: {x: 1.6597744, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -12045,8 +12015,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.99999976, y: 0.22844337, z: 1}
+  m_Center: {x: 0, y: -0.38577825, z: 0}
 --- !u!23 &1093630659
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -13877,7 +13847,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.542132, y: 1}
+    m_SensorSize: {x: 1.6597744, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -13900,7 +13870,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1251531588}
-  m_LocalRotation: {x: 0.095510274, y: -0.000000017654848, z: 0.0000000016939634, w: 0.99542844}
+  m_LocalRotation: {x: 0.095510274, y: 0.000000017654852, z: -0.0000000016939637, w: 0.99542844}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -14785,7 +14755,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.542132, y: 1}
+    m_SensorSize: {x: 1.6597744, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -17679,7 +17649,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -27.53003, y: -27.1}
+  m_AnchoredPosition: {x: -27.53003, y: -27.099976}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1543581313
@@ -19865,7 +19835,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 352793707506643510, guid: d2a4ed402d526ce4ea51b808abb4c16d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000011444092
+      value: -0.0000038146973
       objectReference: {fileID: 0}
     - target: {fileID: 3829224795934223843, guid: d2a4ed402d526ce4ea51b808abb4c16d, type: 3}
       propertyPath: m_IsActive
@@ -23737,7 +23707,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 47.799988, y: 59.7}
+  m_AnchoredPosition: {x: 47.80005, y: 59.700012}
   m_SizeDelta: {x: 162.41003, y: 30}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &2136736959
@@ -24685,6 +24655,14 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 1122782120}
+    - target: {fileID: 1002863322985208513, guid: b57b5e09c92d63847a95b83f87cd0d05, type: 3}
+      propertyPath: RunSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1002863322985208513, guid: b57b5e09c92d63847a95b83f87cd0d05, type: 3}
+      propertyPath: walkSpeed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1002863322985208516, guid: b57b5e09c92d63847a95b83f87cd0d05, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -24728,6 +24706,22 @@ PrefabInstance:
     - target: {fileID: 1002863322985208516, guid: b57b5e09c92d63847a95b83f87cd0d05, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1002863322985208519, guid: b57b5e09c92d63847a95b83f87cd0d05, type: 3}
+      propertyPath: m_Size.y
+      value: 1.8517692
+      objectReference: {fileID: 0}
+    - target: {fileID: 1002863322985208519, guid: b57b5e09c92d63847a95b83f87cd0d05, type: 3}
+      propertyPath: m_Size.z
+      value: 0.43123654
+      objectReference: {fileID: 0}
+    - target: {fileID: 1002863322985208519, guid: b57b5e09c92d63847a95b83f87cd0d05, type: 3}
+      propertyPath: m_Center.y
+      value: 0.9320757
+      objectReference: {fileID: 0}
+    - target: {fileID: 1002863322985208519, guid: b57b5e09c92d63847a95b83f87cd0d05, type: 3}
+      propertyPath: m_Center.z
+      value: 0.06370613
       objectReference: {fileID: 0}
     - target: {fileID: 8331889123005740917, guid: b57b5e09c92d63847a95b83f87cd0d05, type: 3}
       propertyPath: m_IsActive

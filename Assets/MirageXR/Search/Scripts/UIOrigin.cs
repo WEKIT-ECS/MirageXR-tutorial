@@ -41,7 +41,7 @@ public class UIOrigin : MonoBehaviour
             currentPosition.x = followTarget.position.x;
             currentPosition.z = followTarget.position.z;
 
-            Ray ray = new Ray(followTarget.position, Vector3.down);
+            Ray ray = new Ray(followTarget.position + new Vector3(0,0.5f,0), Vector3.down);
 
             if (Physics.Raycast(ray, out RaycastHit hit, 2f, floorLayer))
             {
