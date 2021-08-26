@@ -22,10 +22,29 @@ public class ThirdPersonController : MonoBehaviour
 
 
     // Update is called once per frame
-    private void FixedUpdate()
+    private void Update()
     {
+        if (SceneManager.Instance.ScreenShotMode) return;
 
-        if (CustomClipPlaying || SceneManager.Instance.ScreenShotMode) return;
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            if (!CustomClipPlaying)
+            {
+                anim.Point();
+                CustomClipPlaying = true;
+                var scaptureMode = SceneManager.Instance.ScreenShotMode ? "Play mode" : "Screenshot mode";
+                var modeDescription = SceneManager.Instance.ScreenShotMode ? "Camera movement: WSAD\nCamera rotation: Right click" : "Player movement: WSAD";
+                SceneManager.Instance.SetGuideText($"P = Cancel pointing\nTab = {scaptureMode}\n{modeDescription} ");
+            }
+            else
+            {
+                anim.StopPoint();
+            }
+
+        }
+
+
+        if (CustomClipPlaying ) return;
 
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vetical = Input.GetAxisRaw("Vertical");
@@ -60,26 +79,6 @@ public class ThirdPersonController : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        if(SceneManager.Instance.ScreenShotMode) return;
 
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            if (!CustomClipPlaying)
-            {
-                anim.Point();
-                CustomClipPlaying = true;
-                var scaptureMode = SceneManager.Instance.ScreenShotMode ? "Play mode" : "Screenshot mode";
-                var modeDescription = SceneManager.Instance.ScreenShotMode ? "Camera movement: WSAD\nCamera rotation: Right click" : "Player movement: WSAD";
-                SceneManager.Instance.SetGuideText($"P = Cancel pointing\nTab = {scaptureMode}\n{modeDescription} ");
-            }
-            else
-            {
-                anim.StopPoint();
-            }
-
-        }
-    }
 
 }
