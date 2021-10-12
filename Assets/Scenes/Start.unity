@@ -15099,6 +15099,7 @@ MonoBehaviour:
   moodleConfigurationPanel: {fileID: 240872205486200341}
   mainCamera: {fileID: 1162241102}
   screenShotCamera: {fileID: 1026208247}
+  allowTransparentColors: 1
   playerCamera: {fileID: 39515898}
   MirageUIs: {fileID: 767276939}
   HololensModel: {fileID: 1630404420236586141}

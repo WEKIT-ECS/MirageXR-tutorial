@@ -33,6 +33,7 @@ public class SceneManager : MonoBehaviour
 
     [SerializeField] private Camera mainCamera;
     [SerializeField] private Camera screenShotCamera;
+    [SerializeField] private bool allowTransparentColors = true;
     [SerializeField] private GameObject playerCamera;
 
     [SerializeField] private GameObject MirageUIs;
@@ -154,7 +155,7 @@ public class SceneManager : MonoBehaviour
             Directory.CreateDirectory(folderPath);
 
         var screenshotName = $"Screenshot_{System.DateTime.Now:dd-MM-yyyy-HH-mm-ss}.png";
-        var texture2D = TakeScreenshot(screenShotCamera);
+        var texture2D = TakeScreenshot(screenShotCamera, allowTransparentColors);
         SaveTexture2DToFile(texture2D, Path.Combine(folderPath, screenshotName));
 
         yield return new WaitForSeconds(0.2f);
@@ -170,13 +171,13 @@ public class SceneManager : MonoBehaviour
         File.WriteAllBytes(fileName, bytes);
     }
     
-    private static Texture2D TakeScreenshot(Camera screenshotCamera, int depth = 32) {
+    private static Texture2D TakeScreenshot(Camera screenshotCamera, bool allowTransparentColors = true, int depth = 32) {
         var resWidth = screenshotCamera.pixelWidth;
         var resHeight = screenshotCamera.pixelHeight;
         var renderTexture = new RenderTexture(resWidth, resHeight, depth);
         var oldRender = screenshotCamera.targetTexture;
         screenshotCamera.targetTexture = renderTexture;
-        var screenShot = new Texture2D(resWidth, resHeight, TextureFormat.ARGB32, false);
+        var screenShot = new Texture2D(resWidth, resHeight, allowTransparentColors ? TextureFormat.ARGB32 : TextureFormat.RGB24, false);
         screenshotCamera.Render();
         RenderTexture.active = renderTexture;
         screenShot.ReadPixels(new Rect(0, 0, resWidth, resHeight), 0, 0);
