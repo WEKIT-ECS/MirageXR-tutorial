@@ -46,6 +46,8 @@ public class SceneManager : MonoBehaviour
 
     [SerializeField] private GameObject helmet;
 
+    [SerializeField] private Toggle transparentBGToggle;
+
     private bool screenShotMode;
 
     public bool ScreenShotMode
@@ -215,6 +217,12 @@ public class SceneManager : MonoBehaviour
     public void SetGuideText(string text)
     {
         GuideText.GetComponent<Text>().text = text;
+    }
+
+
+    public void ToggleTransparentBackground()
+    {
+        allowTransparentColors = transparentBGToggle.isOn;
     }
 
 
