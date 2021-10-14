@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
@@ -34,6 +33,7 @@ public class SceneManager : MonoBehaviour
 
     [SerializeField] private Camera mainCamera;
     [SerializeField] private Camera screenShotCamera;
+    [SerializeField] private bool allowTransparentColors = true;
     [SerializeField] private GameObject playerCamera;
 
     [SerializeField] private GameObject MirageUIs;
@@ -149,19 +149,14 @@ public class SceneManager : MonoBehaviour
         onScreenCanvas.SetActive(false);
         GuideText.gameObject.SetActive(false);
 
-        var random = new System.Random();
-
-        string folderPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Desktop) + "/Screenshots/";
+        string folderPath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Desktop), "Screenshots");
 
         if (!Directory.Exists(folderPath))
             Directory.CreateDirectory(folderPath);
 
-        var screenshotName =
-                                "Screenshot_" +
-                                System.DateTime.Now.ToString("dd-MM-yyyy-HH-mm-ss") +
-                                ".png";
-        ScreenCapture.CaptureScreenshot(System.IO.Path.Combine(folderPath, screenshotName),2);
-        Debug.Log(folderPath + screenshotName);
+        var screenshotName = $"Screenshot_{System.DateTime.Now:dd-MM-yyyy-HH-mm-ss}.png";
+        var texture2D = TakeScreenshot(screenShotCamera, allowTransparentColors);
+        SaveTexture2DToFile(texture2D, Path.Combine(folderPath, screenshotName));
 
         yield return new WaitForSeconds(0.2f);
 
@@ -169,7 +164,29 @@ public class SceneManager : MonoBehaviour
         onScreenCanvas.SetActive(true);
         GuideText.gameObject.SetActive(true);
     }
-
+    
+    private static void SaveTexture2DToFile(Texture2D texture2D, string fileName)
+    {
+        var bytes = texture2D.EncodeToPNG();
+        File.WriteAllBytes(fileName, bytes);
+    }
+    
+    private static Texture2D TakeScreenshot(Camera screenshotCamera, bool allowTransparentColors = true, int depth = 32) {
+        var resWidth = screenshotCamera.pixelWidth;
+        var resHeight = screenshotCamera.pixelHeight;
+        var renderTexture = new RenderTexture(resWidth, resHeight, depth);
+        var oldRender = screenshotCamera.targetTexture;
+        screenshotCamera.targetTexture = renderTexture;
+        var screenShot = new Texture2D(resWidth, resHeight, allowTransparentColors ? TextureFormat.ARGB32 : TextureFormat.RGB24, false);
+        screenshotCamera.Render();
+        RenderTexture.active = renderTexture;
+        screenShot.ReadPixels(new Rect(0, 0, resWidth, resHeight), 0, 0);
+        screenShot.Apply();
+        screenshotCamera.targetTexture = oldRender;
+        RenderTexture.active = null;
+        Destroy(renderTexture);
+        return screenShot;
+    }
 
     IEnumerator ShowCaptureLabel()
     {
